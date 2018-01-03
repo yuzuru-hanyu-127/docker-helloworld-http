@@ -1,5 +1,8 @@
 import http.server
 import socketserver
+import os
+
+PORT = os.environ.get('PORT', 80)
 
 class CustomRequestHandler(http.server.SimpleHTTPRequestHandler):
 
@@ -17,5 +20,6 @@ class CustomRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(f.read())
             return
 
-httpd = socketserver.TCPServer(("", 80), CustomRequestHandler)
+httpd = socketserver.TCPServer(("", int(PORT)), CustomRequestHandler)
+print("Python web server listening on port {}...".format(PORT))
 httpd.serve_forever()

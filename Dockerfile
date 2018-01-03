@@ -6,6 +6,4 @@ WORKDIR /opt/app/
 
 COPY . /opt/app/
 
-EXPOSE 80
-
 ENTRYPOINT ["python", "./server.py"]
