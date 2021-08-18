@@ -1,6 +1,10 @@
 import http.server
 import socketserver
 import os
+import datetime
+
+now_time=datetime.datetime.now()
+print(now_time)
 
 PORT = os.environ.get('PORT', 80)
 
@@ -22,4 +26,8 @@ class CustomRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 httpd = socketserver.TCPServer(("", int(PORT)), CustomRequestHandler)
 print("Python web server listening on port {}...".format(PORT))
+
+now_time=datetime.datetime.now()
+print(now_time)
+
 httpd.serve_forever()
